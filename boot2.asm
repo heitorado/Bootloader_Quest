@@ -72,7 +72,21 @@ printa_string:
     mov ah, 0eh ;código da instrução para imprimir um caractere que está em al
     int 10h     ;interrupção de vídeo.
 
+    ;chama delay pra dar delay
+    call delay
+
     jmp printa_string ;loop
 
     .done:   
         ret
+
+delay:
+    ;coloca 5000 no cx
+    mov cx, 0
+    .main:
+        cmp cx, 50000000
+        je .done
+        inc cx
+        jmp .main
+        .done
+            ret
