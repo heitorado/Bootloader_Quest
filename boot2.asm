@@ -1,10 +1,11 @@
 org 0x500
 jmp 0x0000:start
 
-message db 'Loading Adventure...', 13, 10, 0
-message2 db 'Beating gnomes out of the cpu...', 13, 10, 0
-message3 db 'Clearing the fairy dust out of the fan...', 13, 10, 0
-message4 db 'DEUS VULTing your core...', 13, 10, 0
+startmsg db 13, 10, 0
+message1 db '     Loading Adventure...', 13, 10, 0
+message2 db '     Beating gnomes out of the cpu...', 13, 10, 0
+message3 db '     Clearing the fairy dust out of the fan...', 13, 10, 0
+message4 db '     DEUS VULTing your core...', 13, 10, 0
 
 start:
     xor ax, ax
@@ -51,9 +52,15 @@ load:
     int 10h
 
     ;muda cor do texto
-    mov bl, 1
+    mov bl, 0fh
     ;coloca apontador na mensagem
-    mov si, message
+    mov si, startmsg
+    call printa_string
+    mov si, startmsg
+    call printa_string
+
+
+    mov si, message1
     call printa_string
     mov si, message2
     call printa_string
@@ -82,7 +89,7 @@ printa_string:
     int 10h     ;interrupção de vídeo.
 
     ;chama delay pra dar delay
-    call delay
+    call delayText
 
     jmp printa_string ;loop
 
@@ -90,10 +97,10 @@ printa_string:
         ret
 
 ;responsavel por fazer o texto printar caractere por caractere
-delay:
+delayText:
     ;coloca 5000 no cx
     MOV     CX, 1H
     MOV     DX, 4248H
     MOV     AH, 86H
     INT     15H
-            ret
+    ret
