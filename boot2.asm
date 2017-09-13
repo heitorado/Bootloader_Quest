@@ -6,6 +6,11 @@ message1 db '     Loading Adventure...', 13, 10, 0
 message2 db '     Beating gnomes out of the cpu...', 13, 10, 0
 message3 db '     Clearing the fairy dust out of the fan...', 13, 10, 0
 message4 db '     DEUS VULTing your core...', 13, 10, 0
+message5 db '     Cleaning the dwarf gears of the processer...', 13, 10, 0
+message6 db '     Petting the wolf companion...', 13, 10, 0
+message7 db '     Lighting the bonfire...', 13, 10, 0
+message8 db '     Paying tip for the troll...', 13, 10, 0
+message9 db '     Expelling the orcs...', 13, 10, 0
 
 start:
     xor ax, ax
@@ -52,7 +57,8 @@ load:
     int 10h
 
     ;muda cor do texto
-    mov bl, 0fh
+    mov bl, 0fh ;branco
+    ;mov bl, 10 ;verde
     ;coloca apontador na mensagem
     mov si, startmsg
     call printa_string
@@ -68,6 +74,18 @@ load:
     call printa_string
     mov si, message4
     call printa_string
+    mov si, message5
+    call printa_string
+    mov si, message6
+    call printa_string
+    mov si, message7
+    call printa_string
+    mov si, message8
+    call printa_string
+    mov si, message9
+    call printa_string
+
+
     call hold
 
     ;programa termina aqui
@@ -99,8 +117,8 @@ printa_string:
 ;responsavel por fazer o texto printar caractere por caractere
 delayText:
     ;coloca 5000 no cx
-    MOV     CX, 1H
-    MOV     DX, 4248H
+    MOV     CX, 0H
+    MOV     DX, 9248H
     MOV     AH, 86H
     INT     15H
     ret
