@@ -2,6 +2,9 @@ org 0x500
 jmp 0x0000:start
 
 message db 'Loading Adventure...', 13, 10, 0
+message2 db 'Beating gnomes out of the cpu...', 13, 10, 0
+message3 db 'Clearing the fairy dust out of the fan...', 13, 10, 0
+message4 db 'DEUS VULTing your core...', 13, 10, 0
 
 start:
     xor ax, ax
@@ -44,13 +47,19 @@ load:
     ;Alterando cor de Fundo
     mov ah, 0xb
     mov bh, 0
-    mov bl, 4
+    mov bl, 0
     int 10h
 
     ;muda cor do texto
     mov bl, 1
     ;coloca apontador na mensagem
     mov si, message
+    call printa_string
+    mov si, message2
+    call printa_string
+    mov si, message3
+    call printa_string
+    mov si, message4
     call printa_string
     call hold
 
@@ -63,7 +72,7 @@ hold:
     
     jmp hold
 
-
+;função para exibir a string na tela
 printa_string:
     lodsb       ;carrega uma letra de si em al e passa para o próximo caractere
     cmp al, 0   ;chegou no final? (equivalente a um \0)
@@ -80,13 +89,11 @@ printa_string:
     .done:   
         ret
 
+;responsavel por fazer o texto printar caractere por caractere
 delay:
     ;coloca 5000 no cx
-    mov cx, 0
-    .main:
-        cmp cx, 50000000
-        je .done
-        inc cx
-        jmp .main
-        .done
+    MOV     CX, 1H
+    MOV     DX, 4248H
+    MOV     AH, 86H
+    INT     15H
             ret
