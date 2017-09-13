@@ -1,10 +1,13 @@
 org 0x500
 jmp 0x0000:start
 
-startmsg db 13, 10, 0
-tripleenter db 13,10,13,10,13,10,0
+;para guardar entrada do teclado
+input times 2 db 0
+
+dual_enter db 13, 10, 13,10, 0
+four_enter db 13,10, 13,10, 13,10, 13,10, 13,10, 0
 message1 db '    >Loading Adventure...', 13, 10, 13, 10, 0
-message2 db '    >Beating gnomes out of the cpu...', 13, 10, 13, 10, 0
+message2 db '    >Beating gnomes out of the CPU...', 13, 10, 13, 10, 0
 message3 db '    >Clearing the fairy dust...', 13, 10, 13, 10, 0
 message4 db '    >DEUS VULTing your core...', 13, 10, 13, 10, 0
 message5 db '    >Cleaning the dwarf gears...', 13, 10, 13, 10, 0
@@ -12,7 +15,7 @@ message5 db '    >Cleaning the dwarf gears...', 13, 10, 13, 10, 0
 ;message7 db '    >Lighting the bonfire...', 13, 10, 0
 ;message8 db '    >Paying tip for the troll...', 13, 10, 0
 ;message9 db '    >Expelling the orcs...', 13, 10, 0
-startKernelMsg db '       >Press Any Key to START<', 13, 10, 0
+startKernelMsg db '       >Press Any Key to START<', 0
 
 start:
     xor ax, ax
@@ -62,9 +65,7 @@ load:
     mov bl, 0fh ;branco
     ;mov bl, 10 ;verde
     ;coloca apontador na mensagem
-    mov si, startmsg
-    call printa_string
-    mov si, startmsg
+    mov si, dual_enter
     call printa_string
 
     ;sequencia que mostra mensagens de carregamento
@@ -92,26 +93,20 @@ load:
     call load_bar
 
     ;chama mensagem de start
-    mov si, tripleenter
+    mov si, four_enter
     call printa_string
-    mov si, tripleenter
-    call printa_string
-
-
   
     mov si, startKernelMsg
     call printa_string
 
-    call hold
+    call wait_confirmation
 
     ;programa termina aqui
 
     jmp 0x7e00  ;pula para o setor de endereco 0x7e00 (start do boot2)
 
 
-hold:
-    
-    jmp hold
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;FUNÇÕES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;função para exibir a string na tela
 printa_string:
@@ -214,7 +209,7 @@ load_bar:
         .printy:
             mov ah, 0ch ;pixel na coordenada [dx, cx]
             mov bh, 0
-            mov al, 0fh ;cor do pixel (branco)
+            mov al, 1 ;cor do pixel (branco)
             int 10h ;interrupção de video
             inc dx  ;incrementa para printar o proximo pixel
 
@@ -239,3 +234,24 @@ load_bar:
         
             .done:
                 ret
+
+wait_confirmation:
+    pusha
+    ;coloca apontador na variavel
+    mov di, input
+    ;ler do teclado
+    MOV AH, 0
+    INT 16H
+
+    stosb
+    ;verifica se foi 'alguma coisa'
+    mov dl, al
+    cmp dl, 0
+    ;se foi, acabou
+    JNE .done
+    ;senao, continua esperando
+    JMP wait_confirmation
+
+    .done
+        popa
+        ret

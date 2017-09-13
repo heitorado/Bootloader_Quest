@@ -2,24 +2,20 @@ WORD_SIZE equ 2
 org 0x500
 jmp 0x0000:start
 letra times WORD_SIZE db 0
-message db 'Loading Adventure...', 13, 10, 0
-message2 db 'Beating gnomes out of the cpu...', 13, 10, 0
-message3 db 'Clearing the fairy dust out of the fan...', 13, 10, 0
-message4 db 'DEUS VULTing your core...', 13, 10, 0
-pulinha db 13, 10, 0
 
-opc1 db '> a', 13,10,0
-opc2 db '  b', 13,10,0
-opc3 db '  c', 13,10,0
+opc1 db '>i', 13,10,0
+opc2 db ' j', 13,10,0
+opc3 db ' n', 13,10,0
 
-opc11 db '  a', 13,10,0
-opc22 db '> b', 13,10,0
-opc33 db '  c', 13,10,0
+opc11 db ' i', 13,10,0
+opc22 db '>j', 13,10,0
+opc33 db ' n', 13,10,0
 
-opc111 db '  a', 13,10,0
-opc222 db '  b', 13,10,0
-opc333 db '> c', 13,10,0
+opc111 db ' i', 13,10,0
+opc222 db ' j', 13,10,0
+opc333 db '>n', 13,10,0
 
+end db 'continua no proximo episodio...', 13,10,0
 
 start:
     xor ax, ax
@@ -67,20 +63,7 @@ load:
 
     ;muda cor do texto
     mov bl, 10
-    ;coloca apontador na mensagem
-    ; mov si, pulinha
-    ;call printa_string
-    ;mov si, pulinha
-    ;call printa_string
-    ;mov si, message
-    ;call printa_string
-    ;mov si, message2
-    ;call printa_string
-    ;mov si, message3
-    ;call printa_string
-    ;mov si, message4
-    ;call printa_string
-    ;call hold
+ 
     mov si, opc1
     call printa_string
     mov si, opc2
@@ -92,6 +75,7 @@ load:
 main:
     mov di, letra
     call ler_string
+    call clear_ne
     mov dl, al
     cmp dl, 119
     je .funcao1
@@ -115,6 +99,9 @@ main:
                 jmp .parte1
 
         .funcao2:
+            cmp dl, 0dh
+            je new
+
             inc cx
 
             cmp cx, 3
@@ -156,9 +143,9 @@ main:
             mov si, opc333
             call printa_string
         jmp main
-
-
-
+new:
+    mov si, end
+    call printa_string
     ;programa termina aqui
 
     jmp 0x7e00  ;pula para o setor de endereco 0x7e00 (start do boot2)
@@ -206,13 +193,20 @@ printa_string:
     int 10h     ;interrupção de vídeo.
 
     ;chama delay pra dar delay
-    call delay
+    ;call delay
 
     jmp printa_string ;loop
 
     .done:   
         ret
 
+clear_ne:
+    pusha
+    mov ah, 0
+    mov al, 12h
+    int 10h
+    popa
+    ret
 delay:
     pusha
     ;coloca 5000 no cx
