@@ -2,15 +2,17 @@ org 0x500
 jmp 0x0000:start
 
 startmsg db 13, 10, 0
-message1 db '     Loading Adventure...', 13, 10, 0
-message2 db '     Beating gnomes out of the cpu...', 13, 10, 0
-message3 db '     Clearing the fairy dust out of the fan...', 13, 10, 0
-message4 db '     DEUS VULTing your core...', 13, 10, 0
-message5 db '     Cleaning the dwarf gears of the processer...', 13, 10, 0
-message6 db '     Petting the wolf companion...', 13, 10, 0
-message7 db '     Lighting the bonfire...', 13, 10, 0
-message8 db '     Paying tip for the troll...', 13, 10, 0
-message9 db '     Expelling the orcs...', 13, 10, 0
+tripleenter db 13,10,13,10,13,10,0
+message1 db '    >Loading Adventure...', 13, 10, 13, 10, 0
+message2 db '    >Beating gnomes out of the cpu...', 13, 10, 13, 10, 0
+message3 db '    >Clearing the fairy dust...', 13, 10, 13, 10, 0
+message4 db '    >DEUS VULTing your core...', 13, 10, 13, 10, 0
+message5 db '    >Cleaning the dwarf gears...', 13, 10, 13, 10, 0
+;message6 db '    >Petting the wolf companion...', 13, 10, 0
+;message7 db '    >Lighting the bonfire...', 13, 10, 0
+;message8 db '    >Paying tip for the troll...', 13, 10, 0
+;message9 db '    >Expelling the orcs...', 13, 10, 0
+startKernelMsg db '       >Press Any Key to START<', 13, 10, 0
 
 start:
     xor ax, ax
@@ -47,7 +49,7 @@ load:
 
     ;Iniciando modo de video
     mov ah, 0
-    mov al, 12h
+    mov al, 13
     int 10h
 
     ;Alterando cor de Fundo
@@ -65,7 +67,7 @@ load:
     mov si, startmsg
     call printa_string
 
-
+    ;sequencia que mostra mensagens de carregamento
     mov si, message1
     call printa_string
     mov si, message2
@@ -76,15 +78,29 @@ load:
     call printa_string
     mov si, message5
     call printa_string
-    mov si, message6
+    ;mov si, message6
+    ;call printa_string
+    ;mov si, message7
+    ;call printa_string
+    ;mov si, message8
+    ;call printa_string
+    ;mov si, message9
+    ;call printa_string
+
+    ;mostra contorno da barra de loading
+    call load_contour
+    call load_bar
+
+    ;chama mensagem de start
+    mov si, tripleenter
     call printa_string
-    mov si, message7
-    call printa_string
-    mov si, message8
-    call printa_string
-    mov si, message9
+    mov si, tripleenter
     call printa_string
 
+
+  
+    mov si, startKernelMsg
+    call printa_string
 
     call hold
 
@@ -116,9 +132,110 @@ printa_string:
 
 ;responsavel por fazer o texto printar caractere por caractere
 delayText:
+    pusha
     ;coloca 5000 no cx
     MOV     CX, 0H
     MOV     DX, 9248H
     MOV     AH, 86H
     INT     15H
+    popa
     ret
+
+load_contour:
+    ;seta posicao inicial do contorno
+    mov dx, 110
+    mov cx, 40
+
+    .main:
+        ;para printar o retangulo branco que aparecerá por fora
+        .printOuterx:
+            mov ah, 0ch ;pixel na coordenada [dx, cx]
+            mov bh, 0
+            mov al, 0fh ;cor do pixel (branco)
+            int 10h ;interrupção de video
+            inc cx  ;incrementa para printar o proximo pixel
+
+            ;ve se ja chegou no tamanho desejado em x
+            cmp cx, 270
+            je .printOutery
+            jmp .printOuterx
+
+        ;para descer a linha (incrementar dx)
+        .printOutery:
+            ;esse valor deve ser igual o cx original, para manter o tamanho
+            mov cx, 40
+            inc dx  ;incrementa para printar o proximo pixel
+
+            ;ve se ja chegou no tamanho desejado em y
+            cmp dx, 130
+            je .InnerCoord
+            jmp .printOuterx
+        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        .InnerCoord: ;muda as coordenadas para deixar uma borda
+            mov dx, 111
+            mov cx, 41
+            jmp .printInnerx
+        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        ;para "cavar" o retangulo branco por dentro
+        .printInnerx:
+            mov ah, 0ch ;pixel na coordenada [dx, cx]
+            mov bh, 0
+            mov al, 0 ;cor do pixel (preto)
+            int 10h ;interrupção de video
+            inc cx  ;incrementa para printar o proximo pixel
+
+            ;ve se ja chegou no tamanho desejado em x
+            cmp cx, 269
+            je .printInnery
+            jmp .printInnerx
+
+        ;para descer a linha (incrementar dx)
+        .printInnery:
+            ;esse valor deve ser igual o cx original, para manter o tamanho
+            mov cx, 41
+            inc dx  ;incrementa para printar o proximo pixel
+
+            ;ve se ja chegou no tamanho desejado em y
+            cmp dx, 129
+            je .done
+            jmp .printInnerx
+
+            .done:
+                ret
+
+load_bar:
+    ;seta posicao inicial da barra
+    mov dx, 112
+    mov cx, 42
+
+    .main:
+        ;para printar o retangulo branco que aparecerá por fora
+
+        .printy:
+            mov ah, 0ch ;pixel na coordenada [dx, cx]
+            mov bh, 0
+            mov al, 0fh ;cor do pixel (branco)
+            int 10h ;interrupção de video
+            inc dx  ;incrementa para printar o proximo pixel
+
+            ;ve se ja chegou no tamanho desejado em y
+            cmp dx, 128
+            je .printx
+            jmp .printy
+
+        ;para descer a linha (incrementar dx)
+        .printx:
+            ;esse valor deve ser igual o cx original, para manter o tamanho
+            mov dx, 112
+            inc cx  ;incrementa para printar o proximo pixel
+
+            ;ve se ja chegou no tamanho desejado em x
+            cmp cx, 268
+
+            call delayText
+
+            je .done
+            jmp .printy
+        
+            .done:
+                ret
