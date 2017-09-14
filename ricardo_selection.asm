@@ -3,17 +3,17 @@ org 0x500
 jmp 0x0000:start
 letra times WORD_SIZE db 0
 
-opc1 db '>i', 13,10,0
-opc2 db ' j', 13,10,0
-opc3 db ' n', 13,10,0
+opc1 db '>(a)', 13,10,0
+opc2 db ' (b)', 13,10,0
+opc3 db ' (c)', 13,10,0
 
-opc11 db ' i', 13,10,0
-opc22 db '>j', 13,10,0
-opc33 db ' n', 13,10,0
+opc11 db ' (a)', 13,10,0
+opc22 db '>(b)', 13,10,0
+opc33 db ' (c)', 13,10,0
 
-opc111 db ' i', 13,10,0
-opc222 db ' j', 13,10,0
-opc333 db '>n', 13,10,0
+opc111 db ' (a)', 13,10,0
+opc222 db ' (b)', 13,10,0
+opc333 db '>(c)', 13,10,0
 
 end db 'continua no proximo episodio...', 13,10,0
 
@@ -64,18 +64,12 @@ load:
     ;muda cor do texto
     mov bl, 10
  
-    mov si, opc1
-    call printa_string
-    mov si, opc2
-    call printa_string
-    mov si, opc3
-    call printa_string
-    mov cx, 0
+    
 
-main:
+rick_choice_system:
     mov di, letra
-    call ler_string
-    call clear_ne
+    call wait_choice_input
+    call clearScr
     mov dl, al
     cmp dl, 119
     je .funcao1
@@ -100,7 +94,7 @@ main:
 
         .funcao2:
             cmp dl, 0dh
-            je new
+            je confirm_choice
 
             inc cx
 
@@ -126,7 +120,7 @@ main:
             call printa_string
             mov si, opc3
             call printa_string
-        jmp main
+        jmp rick_choice_system
         .parte2:
             mov si, opc11
             call printa_string
@@ -134,7 +128,7 @@ main:
             call printa_string
             mov si, opc33
             call printa_string
-        jmp main  
+        jmp rick_choice_system  
         .parte3:
             mov si, opc111
             call printa_string
@@ -142,46 +136,23 @@ main:
             call printa_string
             mov si, opc333
             call printa_string
-        jmp main
-new:
+        jmp rick_choice_system
+
+confirm_choice:
     mov si, end
     call printa_string
     ;programa termina aqui
 
     jmp 0x7e00  ;pula para o setor de endereco 0x7e00 (start do boot2)
-ler_string:
+
+
+wait_choice_input:
     
     ;ler do teclado
     MOV AH, 0
     INT 16H
-
-    ;mostra o que esta sendo digitado
-    ;mov AH, 0xe ;Número da chamada
-    ;mov BH, 0 ;Número da página.
-    ;int 10h
-
-    ;verifica se foi \n
-    ;CMP AL, 0dh
-    ;se foi, acabou
-    ;JE .done
-
-    ;senao, salva e le a prox
-    stosb
-    ;JMP ler_string
-
-    ;.done:
-        ;pula linha
-        ;mov AH, 0xe ;Número da chamada
-        ;mov AL, 10 ;Caractere em ASCII a se escrever
-        ;mov BH, 0 ;Número da página.
-        ;int 10h
-        ;volta
-        
+    stosb      
         ret
-
-hold:
-    
-    jmp hold
 
 
 printa_string:
@@ -200,13 +171,15 @@ printa_string:
     .done:   
         ret
 
-clear_ne:
+clearScr:
     pusha
     mov ah, 0
     mov al, 12h
     int 10h
     popa
     ret
+
+
 delay:
     pusha
     ;coloca 5000 no cx

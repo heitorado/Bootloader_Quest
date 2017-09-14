@@ -130,7 +130,7 @@ delayText:
     pusha
     ;coloca 5000 no cx
     MOV     CX, 0H
-    MOV     DX, 9248H
+    MOV     DX, 4248H ;;valor original: 9248H
     MOV     AH, 86H
     INT     15H
     popa
@@ -237,20 +237,21 @@ load_bar:
 
 wait_confirmation:
     pusha
-    ;coloca apontador na variavel
-    mov di, input
-    ;ler do teclado
-    MOV AH, 0
-    INT 16H
+    .main:
+        ;coloca apontador na variavel
+        mov di, input
+        ;ler do teclado
+        MOV AH, 0
+        INT 16H
 
-    stosb
-    ;verifica se foi 'alguma coisa'
-    mov dl, al
-    cmp dl, 0
-    ;se foi, acabou
-    JNE .done
-    ;senao, continua esperando
-    JMP wait_confirmation
+        stosb
+        ;verifica se foi 'alguma coisa'
+        mov dl, al
+        cmp dl, 0
+        ;se foi, acabou
+        JNE .done
+        ;senao, continua esperando
+        JMP .main
 
     .done
         popa
