@@ -118,7 +118,7 @@ printa_string:
     int 10h     ;interrupção de vídeo.
 
     ;chama delay pra dar delay
-    call delayText
+    ;call delayText
 
     jmp printa_string ;loop
 
@@ -227,7 +227,7 @@ load_bar:
             ;ve se ja chegou no tamanho desejado em x
             cmp cx, 268
 
-            call delayText
+            ;call delayText
 
             je .done
             jmp .printy
