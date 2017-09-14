@@ -351,6 +351,7 @@ clearAll:
     mov al, 12h
     int 10h
     popa
+    mov bl, 0fh
     ret
 
 printBoxes:
