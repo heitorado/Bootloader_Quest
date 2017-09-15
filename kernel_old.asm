@@ -1,4 +1,3 @@
-
 org 0x7e00
 jmp 0x0000:start
 
@@ -28,22 +27,17 @@ opc3 db '                        (a)          (b)         >(c)', 13,10,0
 
 
 pulalinha db 13,10,0
-choiceMsg db 13,10,13, 10,  0
+choiceMsg db 13,10, '           ...what do you do?', 13, 10, 13, 10,  0
 
-act1Msg db 'Voce acorda em uma sala fria...',13,10,'Tudo parece ser feito de metal, as portas e janelas trancadas, a luz esta muito fraca e voce mal consegue ver alem disso...',13,10,'Voce nao lembra de nada anterior ao momento que voce acordou',13,10,'Na sua frente, ha apenas um computador, embaixo tem escrito em letras grandes C.A.L.D.',13,10,'Ele emite um *bip* enquanto palavras aparecem em sua tela, parece ser seu unico contato no momento' ,13,10, 13,10, 13,10, 'Ola?',13,10,'Ola...',13,10,'Podemos falar um instante?',13,10,'Voce esta bem? Por favor me responda, estou preoucupado...',13,10,'Tenho certeza que voce tem muitas perguntas, mas acima de tudo, estou feliz que voce esta bem, voce provavelmente esta desorientado, nao se preoucupe e normal apos longos periodos de hibernacao, nao se preoucupe sua memoria vai voltar...',13,10,'Voce sabe onde estamos?',13,10,0
-act1Choices db '     (a) Nao', 13, 10, '     (b) Nao consigo me lembrar', 13, 10, '     (c) Sim, eu lembro', 13, 10, 0
-act1_1Msg db '1.1Voce acorda em uma sala fria...',13,10,'Tudo parece ser feito de metal, as portas e janelas trancadas, a luz esta muito fraca e voce mal consegue ver alem disso...',13,10,'Voce nao lembra de nada anterior ao momento que voce acordou',13,10,'Na sua frente, ha apenas um computador, embaixo tem escrito em letras grandes C.A.L.D.',13,10,'Ele emite um *bip* enquanto palavras aparecem em sua tela, parece ser seu unico contato no momento' ,13,10, 13,10, 13,10, 'Ola?',13,10,'Ola...',13,10,'Podemos falar um instante?',13,10,'Voce esta bem? Por favor me responda, estou preoucupado...',13,10,'Tenho certeza que voce tem muitas perguntas, mas acima de tudo, estou feliz que voce esta bem, voce provavelmente esta desorientado, nao se preoucupe e normal apos longos periodos de hibernacao, nao se preoucupe sua memoria vai voltar...',13,10,'Voce sabe onde estamos?',13,10,0
-act1_1Choices db '1.1     (a) Nao', 13, 10, '     (b) Nao consigo me lembrar', 13, 10, '     (c) Sim, eu lembro', 13, 10, 0
-act1_2Msg db '1.2Voce acorda em uma sala fria...',13,10,'Tudo parece ser feito de metal, as portas e janelas trancadas, a luz esta muito fraca e voce mal consegue ver alem disso...',13,10,'Voce nao lembra de nada anterior ao momento que voce acordou',13,10,'Na sua frente, ha apenas um computador, embaixo tem escrito em letras grandes C.A.L.D.',13,10,'Ele emite um *bip* enquanto palavras aparecem em sua tela, parece ser seu unico contato no momento' ,13,10, 13,10, 13,10, 'Ola?',13,10,'Ola...',13,10,'Podemos falar um instante?',13,10,'Voce esta bem? Por favor me responda, estou preoucupado...',13,10,'Tenho certeza que voce tem muitas perguntas, mas acima de tudo, estou feliz que voce esta bem, voce provavelmente esta desorientado, nao se preoucupe e normal apos longos periodos de hibernacao, nao se preoucupe sua memoria vai voltar...',13,10,'Voce sabe onde estamos?',13,10,0
-act1_2Choices db '1.2     (a) Nao', 13, 10, '     (b) Nao consigo me lembrar', 13, 10, '     (c) Sim, eu lembro', 13, 10, 0
+introMsg db '   You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
+introChoices db '     (a) Check out the tunnel', 13, 10, '     (b) Search for any memories inside your bag', 13, 10, '     (c) Go down the ice stairway', 13, 10, 0
 
+act1Msg db '   ACT 1You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
+act2Msg db '   ACT 2You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
+act3Msg db '   ACT 3You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
+act4Msg db '   ACT 4You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
 
-act2Msg db '   ACT 1You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-act3Msg db '   ACT 2You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-act4Msg db '   ACT 3You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-act5Msg db '   ACT 4You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-
-;teste db 13,10,13,10, '     you stupid piece of shit. why would you choose that?', 13,10,0
+teste db 13,10,13,10, '     you stupid piece of shit. why would you choose that?', 13,10,0
 
 start:
     xor ax, ax
@@ -54,7 +48,7 @@ start:
     call init
 
     ;começa historia
-    call act1
+    call intro
     
     ;so pro programa nao fugir
     call hold
@@ -67,59 +61,27 @@ done:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;HÍSTÓRIA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-act1:
+intro:
     mov dl, 0
 
     mov si, pulalinha
     call printa_string
 
-    mov si, act1Msg
+    mov si, introMsg
     call printa_string
 
     mov si, choiceMsg
     call printa_string
 
-    mov si, act1Choices
+    mov si, introChoices
     call printa_string
 
     call rick_init
-    jmp rick_choice_system
-
-    act1_1:
-        mov si, pulalinha
-        call printa_string
-
-        mov si, act1_1Msg
-        call printa_string
-
-        mov si, choiceMsg
-        call printa_string
-
-        mov si, act1_1Choices
-        call printa_string
-
-        call rick_init
-        jmp rick_choice_system
-
-    act1_2:
-        mov si, pulalinha
-        call printa_string
-
-        mov si, act1_2Msg
-        call printa_string
-
-        mov si, choiceMsg
-        call printa_string
-
-        mov si, act1_2Choices
-        call printa_string
-
-        call rick_init
-        jmp rick_choice_system
+    call rick_choice_system
 
     ret
 
-act2:
+act1:
     mov si, pulalinha
     call printa_string
 
@@ -129,7 +91,24 @@ act2:
     mov si, choiceMsg
     call printa_string
 
-    mov si, act1Choices
+    mov si, introChoices
+    call printa_string
+
+    call rick_init
+    call rick_choice_system
+
+    ret
+act2:
+    mov si, pulalinha
+    call printa_string
+
+    mov si, act2Msg
+    call printa_string
+
+    mov si, choiceMsg
+    call printa_string
+
+    mov si, introChoices
     call printa_string
 
     call rick_init
@@ -140,13 +119,13 @@ act3:
     mov si, pulalinha
     call printa_string
 
-    mov si, act2Msg
+    mov si, act3Msg
     call printa_string
 
     mov si, choiceMsg
     call printa_string
 
-    mov si, act1Choices
+    mov si, introChoices
     call printa_string
 
     call rick_init
@@ -157,30 +136,13 @@ act4:
     mov si, pulalinha
     call printa_string
 
-    mov si, act3Msg
-    call printa_string
-
-    mov si, choiceMsg
-    call printa_string
-
-    mov si, act1Choices
-    call printa_string
-
-    call rick_init
-    call rick_choice_system
-
-    ret
-act5:
-    mov si, pulalinha
-    call printa_string
-
     mov si, act4Msg
     call printa_string
 
     mov si, choiceMsg
     call printa_string
 
-    mov si, act1Choices
+    mov si, introChoices
     call printa_string
 
     call rick_init
@@ -206,7 +168,7 @@ init:
     int 10h
 
     ;muda cor do texto
-    mov bl, 0010 ;branco
+    mov bl, 0fh ;branco
     ret
 
 printa_string:
@@ -218,7 +180,7 @@ printa_string:
     int 10h     ;interrupção de vídeo.
 
     ;chama delay pra dar delay
-    call delayText
+    ;call delayText
 
     jmp printa_string ;loop
 
@@ -241,8 +203,8 @@ print_nodelay:
 delayText:
     pusha
     ;coloca 5000 no cx
-    MOV     CX, 0h
-    MOV     DX, 100000
+    MOV     CX, 0H
+    MOV     DX, 9248H
     MOV     AH, 86H
     INT     15H
     popa
@@ -336,39 +298,27 @@ rick_choice_system:
         jmp rick_choice_system
 
 confirm_choice:
-    ;mov si, teste
-    ;call printa_string
+    mov si, teste
+    call printa_string
     call clearAll
     inc dl
 
-    ;navega pelo ato 1
+    ;se vai pro ato 1
     cmp dl, 1
-    je .branchesAct1
-
+    je act1
     ;se vai pro ato 2
     cmp dl, 2
-    je .branchesAct1_x
+    je act2
     ;se vai pro ato 3
     cmp dl, 3
-    je act4
+    je act3
     ;se vai pro ato 4
     cmp dl, 4
-    je act5
+    je act4
     ;se vai pro ato 5
     cmp dl, 5
     je ending
     ;programa termina aqui
-
-        .branchesAct1
-            cmp cx, 2
-            je act1_2
-            jmp act1_1
-        .branchesAct1_x
-            cmp 
-
-
-
-
 
     jmp 0x7e00  ;pula para o setor de endereco 0x7e00 (start do boot2)
 
