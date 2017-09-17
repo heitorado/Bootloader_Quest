@@ -1,4 +1,3 @@
-
 org 0x7e00
 jmp 0x0000:start
 
@@ -30,20 +29,56 @@ opc3 db '                        (a)          (b)         >(c)', 13,10,0
 pulalinha db 13,10,0
 choiceMsg db 13,10,13, 10,  0
 
-act1Msg db 'Voce acorda em uma sala fria...',13,10,'Tudo parece ser feito de metal, as portas e janelas trancadas, a luz esta muito fraca e voce mal consegue ver alem disso...',13,10,'Voce nao lembra de nada anterior ao momento que voce acordou',13,10,'Na sua frente, ha apenas um computador, embaixo tem escrito em letras grandes C.A.L.D.',13,10,'Ele emite um *bip* enquanto palavras aparecem em sua tela, parece ser seu unico contato no momento' ,13,10, 13,10, 13,10, 'Ola?',13,10,'Ola...',13,10,'Podemos falar um instante?',13,10,'Voce esta bem? Por favor me responda, estou preoucupado...',13,10,'Tenho certeza que voce tem muitas perguntas, mas acima de tudo, estou feliz que voce esta bem, voce provavelmente esta desorientado, nao se preoucupe e normal apos longos periodos de hibernacao, nao se preoucupe sua memoria vai voltar...',13,10,'Voce sabe onde estamos?',13,10,0
-act1Choices db '     (a) Nao', 13, 10, '     (b) Nao consigo me lembrar', 13, 10, '     (c) Sim, eu lembro', 13, 10, 0
-act1_1Msg db '1.1Voce acorda em uma sala fria...',13,10,'Tudo parece ser feito de metal, as portas e janelas trancadas, a luz esta muito fraca e voce mal consegue ver alem disso...',13,10,'Voce nao lembra de nada anterior ao momento que voce acordou',13,10,'Na sua frente, ha apenas um computador, embaixo tem escrito em letras grandes C.A.L.D.',13,10,'Ele emite um *bip* enquanto palavras aparecem em sua tela, parece ser seu unico contato no momento' ,13,10, 13,10, 13,10, 'Ola?',13,10,'Ola...',13,10,'Podemos falar um instante?',13,10,'Voce esta bem? Por favor me responda, estou preoucupado...',13,10,'Tenho certeza que voce tem muitas perguntas, mas acima de tudo, estou feliz que voce esta bem, voce provavelmente esta desorientado, nao se preoucupe e normal apos longos periodos de hibernacao, nao se preoucupe sua memoria vai voltar...',13,10,'Voce sabe onde estamos?',13,10,0
-act1_1Choices db '1.1     (a) Nao', 13, 10, '     (b) Nao consigo me lembrar', 13, 10, '     (c) Sim, eu lembro', 13, 10, 0
-act1_2Msg db '1.2Voce acorda em uma sala fria...',13,10,'Tudo parece ser feito de metal, as portas e janelas trancadas, a luz esta muito fraca e voce mal consegue ver alem disso...',13,10,'Voce nao lembra de nada anterior ao momento que voce acordou',13,10,'Na sua frente, ha apenas um computador, embaixo tem escrito em letras grandes C.A.L.D.',13,10,'Ele emite um *bip* enquanto palavras aparecem em sua tela, parece ser seu unico contato no momento' ,13,10, 13,10, 13,10, 'Ola?',13,10,'Ola...',13,10,'Podemos falar um instante?',13,10,'Voce esta bem? Por favor me responda, estou preoucupado...',13,10,'Tenho certeza que voce tem muitas perguntas, mas acima de tudo, estou feliz que voce esta bem, voce provavelmente esta desorientado, nao se preoucupe e normal apos longos periodos de hibernacao, nao se preoucupe sua memoria vai voltar...',13,10,'Voce sabe onde estamos?',13,10,0
-act1_2Choices db '1.2     (a) Nao', 13, 10, '     (b) Nao consigo me lembrar', 13, 10, '     (c) Sim, eu lembro', 13, 10, 0
+act1Msg db 'You wake up on a cold room...',13,10,'Everything seems to be made of steel, the doors and windows are closed and the light is weak, you barely see something...',13,10,'You dont remember anything before the moment you waked',13,10,'In front of you theres only a computer, named by A.C.L.P.',13,10,'Theres a *bip* while every word appears on sceen, seems like the only contact you have ate the moment' ,13,10, 13,10, 13,10, 'Hello?',13,10,'Hello...',13,10,'Can we talk for a moment?',13,10,'Are you alright? Please answer me, im worried about your condition...',13,10,'Im sure that you have a lot of questions, but over all, im happy that youre alright, you probably are dizzy and cant remember much but dont worry it is normal after long periods of hibernation,dont worry you memory will come back...',13,10,'You know where you are?',13,10,0
+act1Choices db '     (a) No', 13, 10, '     (b) I.. I cant remember anything', 13, 10, '     (c) Yes, i remember', 13, 10, 0
+
+act1_1Msg db 'Its okay memory loss is something normal',13,10,'A nuclear war happened, the world is now a wasteland...',13,10,'Im sorry...',13,10,'You, along others survivors, were chosen by the government and put in this shelter',13,10,'You can ask anything you want',13,10,0
+act1_1Choices db '     (a) Where are the others?', 13, 10, '     (b)Who are you?', 13, 10, '     (c)Why is so dark here?', 13, 10, 0
+
+act1_2Msg db 'So...',13,10,'Where are we then?',13,10,0
+act1_2Choices db '     (a) On a spaceship', 13, 10, '     (b) On a nuclear shelter', 13, 10, '     (c) In a prision', 13, 10, 0
+
+act1_3_1_vindoDoAct1_2Msg db '...',13,10,'Im afraid that this isnt the case...', 13, 10,'Its okay memory loss is something normal, you dont have to be ashamed of this...',13,10,'A nuclear war happened, the world is now a wasteland...',13,10,'Im sorry...',13,10,'You, along others survivors, were chosen by the government and put in this shelter',13,10,'You can ask anything you want',13,10,0
+act1_3_1_vindoDoAct1_2Choices db '     (a) Where are the others?', 13, 10, '     (b)Who are you?', 13, 10, '     (c)Why is so dark here?', 13, 10, 0
+
+act1_3_2_vindoDoAct1_2Msg db 'Interesting, you seems like you remember somethings... ',13,10,'Do you have any question?', 13, 10, 0
+act1_3_2_vindoDoAct1_2Choices db '     (a) Where are the others?', 13, 10, '     (b)Who are you?', 13, 10, '     (c)Why is so dark here?', 13, 10, 0
+
+act2Msg db 'The others surviors are in another section now, but i can assure you they are well..',13,10,'You dont have to worry about this now...',13,10,'Wanna play a game of chess?', 13, 10, 0
+act2Choices db'     (a) Yes, i would love it', 13, 10, '     (b)Who are you?', 13, 10, '     (c)Why is so dark here?', 13, 10, 0
+
+act2_1Msg db 'Im A.C.L.P, which means Automated Cordinator for Long Periods, im encharged of taking care of this place during the hibernation periods...',13,10,'Did you know that the first machine to win a human in a game of chess was the Deep Blue in 1997?',13,10,'Have been so long since i played...',13,10,'Do you wanna play whit me?', 13, 10, 0
+act2_1Choices db '     (a) Sure', 13, 10, '     (b)You control this place? Can you turn on the lights?', 13, 10, '     (c)Chess.. It can be good for my memories', 13, 10, 0
 
 
-act2Msg db '   ACT 1You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-act3Msg db '   ACT 2You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-act4Msg db '   ACT 3You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
-act5Msg db '   ACT 4You wake up on a cold ice cave. Your back and head hurts.', 13, 10, '   You struggle to make some sense out of this.', 13, 10, '   But everything you remember is that you were walking home last night.', 13, 10, '   Then suddenly, a shadow, a crack, a scream and a loud noise.', 13, 10, '   Your head hurts when you try to remember.', 13, 10, 13, 10,'   Behind you there is a dark cave. You cant see more than two feet inside it.', 13, 10, '   Fallen next to you, there is your old leather bag.', 13, 10, '   In front of you there is an ice stairway, with what seems to be light,',13,10,'   flickering from the underground.', 13, 10, 0
+act2_2Msg db '...',13,10,'I wil turn on the lights...',13,10,13,10,13,10,'*After he turn on the lights you can see the room better',13,10,'You see a door whit the name *Escape Pod* and right next to it a box whit the letters AGS, the window seems closed whit a metal thing...', 13, 10, 0
+act2_2Choices db '     (a) What... is Escape Pod?', 13, 10, '     (b)What means AGS?', 13, 10, '     (c)Why the window is closed?', 13, 10, 0
 
-;teste db 13,10,13,10, '     you stupid piece of shit. why would you choose that?', 13,10,0
+act2_2_1Msg db 'I cant understand what you mean...',13,10,'...',13,10,'You should relax...',13,10,'For those years i have been praticing the art of storytelling, wanna hear a story?', 13, 10, 0
+act2_2_1Choices db '     (a) What is AGS?', 13, 10, '     (b)Why the windows are closed?', 13, 10, '     (c)Okay, maybe i should relax... Tell me a story...', 13, 10, 0
+
+act2_2_2Msg db 'AGS means Artificial Gravity System',13,10,'Wait... I means Anti-nuclear Giga System!',13,10,'Can i tell you a history that i made in time i was alone? I promisse you it will be good...', 13, 10, 0
+act2_2_2Choices db '     (a)Okay, i wanna hear a history', 13, 10, '     (b)Why the windows are closed?', 13, 10, '     (c)Artificial Gravity System?!', 13, 10, 0
+
+act2_2_3Msg db 'The windows are closed for your safety...',13,10,'Theres still many radioactivity out there',13,10,'If you dont wanna hear a history, we still can play chess...', 13, 10, 0
+act2_2_3Choices db '     (a)Okay, i wanna hear a history', 13, 10, '     (b)I wanna know what is AGS', 13, 10, '     (c)I think now i wanna play a chess game...', 13, 10, 0
+
+act3Msg db 'Me and my big mouth...',13,10,'Guess theres no point on further denying it...', 13, 10, 'Im... Im really sorry. ', 13, 10, 'The truth is... You are not in a shelter.',13,10,'There is no war.',13,10,'You are in a spaceship. You were assigned as a world explorer.',13,10,'Your initial mission was to explore a not yet mapped solar system, but...',13,10,'There was a malfunction at the navigation system. This ship is now in a red giant´s orbit. Destruction is imminent and will happen in a couple of hours.',13,10,'That is the truth.',13,10, '     *A.C.L.P slowly raises the metal shield that was covering the window. You can see the space, the stars, and the red giant, that looks enormous and extremely luminous*',13,10,13,10,'Now, it is time to chosse. You can use the escape pod, but it is only for short flights. You´ll have to hope that someone finds and rescues you. Considering the current supplies of food, water and oxygen...',13,10,'I calculate a chance of 2.7% of survival.',13,10,'The other option is to stay here with me... And I ask you...' ,13,10,13,10,'...please, stay with me.',13,10, 0
+act3Choices db '     (a) I want to flee', 13, 10, '     (b)I want to stay', 13, 10, '     (c)Why the hell should I stay here with you?', 13, 10, 0
+
+act3_1Msg db '...are you sure?', 13, 10, 'I mean, I won´t stop you if you decide to go...',13,10,'Anyway, 2.7% are really small chances...',10,13, 'I was hoping that at least, we didn´t have to die alone...',13,10,'...I don´t want to die alone.',13,10,'If you stay, we can play a game of chess.',13,10,0
+act3_1Choices db '     (a) I´ve made up my mind. I´m leaving.', 13, 10, '     (b)Thinking about it, maybe we should stick together until the end.', 13, 10, '     (c)I need to try and survive, as small the chances are.', 13, 10, 0
+
+act3_2Msg db 'You will die...', 13, 10,'Are you sure that you want to stay here with me?',13,10, 0
+act3_2Choices db '     (a) Yes, I want.', 13, 10, '     (b)I... I´ve changed my mind', 13, 10, '     (c) Maybe you should tell me that story of yours...', 13, 10, 0
+
+act3_3Msg db 'I... I don´t want to be alone...', 13, 10, 'I´m scared...',13,10, 'But I won´t stop you...', 13,10, 'The red giant has a temperature of about 10^18 degrees Fahrenheit.',13,10, 'After bypassing the ship´s metal shields, It will kill us in about 0.02 seconds...',13,10,'Please...',13,10,'Please don´t leave me alone.',13,10, 0
+act3_3Choices db '     (a) Okay... I´m staying.', 13, 10, '     (b) Sorry, but I want to go.', 13, 10, '     (c)I want to stay, don´t be scared. Let´s play a game of chess.', 13, 10, 0
+
+fim db 'YOU DIED...', 13, 10, 'GAME OVER', 13, 10, 0
+fim2 db 'I had to go on...', 13,10, 'If theres a chance, theres hope...', 13,10,0
+fim3 db 'Its over...', 13,10, 'I had accepted my fate...', 13,10,'At least, i was not alone...',13,10,0
+
 
 start:
     xor ax, ax
@@ -86,6 +121,11 @@ act1:
     jmp rick_choice_system
 
     act1_1:
+		inc dl
+		inc dl
+		inc dl
+		inc dl
+		;para o act1_1 a constante que o representa é o 5
         mov si, pulalinha
         call printa_string
 
@@ -102,6 +142,8 @@ act1:
         jmp rick_choice_system
 
     act1_2:
+		inc dl
+		;para o act1_2 a constante que o representa é o 2
         mov si, pulalinha
         call printa_string
 
@@ -116,44 +158,248 @@ act1:
 
         call rick_init
         jmp rick_choice_system
+	act1_3_1_vindoDoAct1_2:
+		;para act1_3_1_vindoDoAct1_2 a constante que o representa é o 3
+		mov si, pulalinha
+        call printa_string
 
+        mov si, act1_3_1_vindoDoAct1_2Msg
+        call printa_string
+
+        mov si, choiceMsg
+        call printa_string
+
+        mov si, act1_3_1_vindoDoAct1_2Choices
+        call printa_string
+
+        call rick_init
+        jmp rick_choice_system
+	act1_3_2_vindoDoAct1_2:
+		inc dl
+		;para act1_3_2_vindoDoAct1_2 a constante que o representa é o 4
+		mov si, pulalinha
+        call printa_string
+
+        mov si, act1_3_2_vindoDoAct1_2Msg
+        call printa_string
+
+        mov si, choiceMsg
+        call printa_string
+
+        mov si, act1_3_2_vindoDoAct1_2Choices
+        call printa_string
+
+        call rick_init
+        jmp rick_choice_system
+		
+
+
+		
+	
     ret
 
 act2:
-    mov si, pulalinha
-    call printa_string
+	cmp dl, 4
+	je .aumentaem2
+	cmp dl, 5
+	je .aumentaem1
+	jmp .ok6
+		.aumentaem2:
+			inc dl
+		.aumentaem1:
+			inc dl
+		.ok6:
+			; para act2 a constante que o representa é o 6
+			mov si, pulalinha
+			call printa_string
 
-    mov si, act1Msg
-    call printa_string
+			mov si, act2Msg
+			call printa_string
 
-    mov si, choiceMsg
-    call printa_string
+			mov si, choiceMsg
+			call printa_string
 
-    mov si, act1Choices
-    call printa_string
+			mov si, act2Choices
+			call printa_string
 
-    call rick_init
-    call rick_choice_system
+			call rick_init
+			call rick_choice_system
+
+    act2_1:
+	cmp dl, 4
+	je .aumenta2_1
+	cmp dl, 5
+	je .aumentaa2_1
+	jmp .okok
+		.aumenta2_1:
+			inc dl
+		.aumentaa2_1:
+			inc dl
+			inc dl
+		
+		.okok:
+			cmp dl, 7
+			je .ok2_1
+			jmp .inc2_1
+			.inc2_1
+				inc dl
+			.ok2_1:
+				;para act2_1 a constante que o representa é o 7
+				mov si, pulalinha
+				call printa_string
+
+				mov si, act2_1Msg
+				call printa_string
+
+				mov si, choiceMsg
+				call printa_string
+
+				mov si, act2_1Choices
+				call printa_string
+
+				call rick_init
+				jmp rick_choice_system
+	
+	act2_2:
+	cmp dl, 4
+	je .aumenta2_2
+	cmp dl, 5
+	je .aumentaa2_2
+	jmp .okokok
+		.aumenta2_2:
+			inc dl
+		.aumentaa2_2:
+			inc dl
+			inc dl
+			inc dl
+		
+		.okokok:
+			cmp dl, 8
+			je .ok2_2ok
+			cmp dl, 7
+			je .ok2_2
+			jmp .inc2_2
+			.inc2_2:
+				inc dl
+			.ok2_2:
+				inc dl
+				.ok2_2ok:
+					;para act2_1 a constante que o representa é o 8 
+					mov si, pulalinha
+					call printa_string
+
+					mov si, act2_2Msg
+					call printa_string
+
+					mov si, choiceMsg
+					call printa_string
+
+					mov si, act2_2Choices
+					call printa_string
+
+					call rick_init
+					jmp rick_choice_system
+	
+	act2_2_1:
+			cmp dl, 12
+			je .tira3
+			jmp .ok2_2_1
+				.tira3:
+					dec dl
+					dec dl
+					dec dl
+				.ok2_2_1:
+				;para act2_2_1 a constante que o representa é o 9
+				mov si, pulalinha
+				call printa_string
+
+				mov si, act2_2_1Msg
+				call printa_string
+
+				mov si, choiceMsg
+				call printa_string
+
+				mov si, act2_2_1Choices
+				call printa_string
+
+				call rick_init
+				jmp rick_choice_system
+				
+			
+	act2_2_2:
+		cmp dl, 10
+		je .ok2_2_2
+		jmp .vira11
+			.vira11:
+				inc dl
+				.ok2_2_2:
+					;para act2_2_2 a constante que o representa é o 10
+					cmp dl, 16
+					je .tirar5
+					jmp .ok111
+						.tirar5:
+							dec dl
+							dec dl
+							dec dl
+							dec dl
+							dec dl
+						.ok111:
+							mov si, pulalinha
+							call printa_string
+
+							mov si, act2_2_2Msg
+							call printa_string
+
+							mov si, choiceMsg
+							call printa_string
+
+							mov si, act2_2_2Choices
+							call printa_string
+
+							call rick_init
+							jmp rick_choice_system
+	act2_2_3:
+		cmp dl, 11
+		je .ok22
+		cmp dl, 10
+		je .ok2_2_3
+		jmp .ok2
+			.ok2:
+			inc dl
+				.ok2_2_3:
+					inc dl
+				.ok22:
+					;para act2_2_3 a constante que o representa é o 11
+					mov si, pulalinha
+					call printa_string
+
+					mov si, act2_2_3Msg
+					call printa_string
+
+					mov si, choiceMsg
+					call printa_string
+
+					mov si, act2_2_3Choices
+					call printa_string
+
+					call rick_init
+					jmp rick_choice_system
+				
+		
+
+
+  
+		
 
     ret
+
 act3:
-    mov si, pulalinha
-    call printa_string
-
-    mov si, act2Msg
-    call printa_string
-
-    mov si, choiceMsg
-    call printa_string
-
-    mov si, act1Choices
-    call printa_string
-
-    call rick_init
-    call rick_choice_system
-
-    ret
-act4:
+	;dl ta em 11 aqui
+	inc dl
+	inc dl
+	inc dl
+	inc dl
+	;15 representa act3
     mov si, pulalinha
     call printa_string
 
@@ -163,31 +409,114 @@ act4:
     mov si, choiceMsg
     call printa_string
 
-    mov si, act1Choices
+    mov si, act3Choices
     call printa_string
 
     call rick_init
     call rick_choice_system
+	
+	act3_1:
+		cmp dl, 19
+			je .t3
+			jmp .ok33
+				.t3:
+					dec dl
+					dec dl
+					dec dl
+				.ok33:
+					cmp dl, 18
+					je .t2
+					jmp .ok3
+						.t2:
+							dec dl
+							dec dl
+						.ok3:
+							;para act3_1 a constante que o representa é o 16
+							mov si, pulalinha
+							call printa_string
 
+							mov si, act3_1Msg
+							call printa_string
+
+							mov si, choiceMsg
+							call printa_string
+
+							mov si, act3_1Choices
+							call printa_string
+
+							call rick_init
+							jmp rick_choice_system
+		
+	act3_2:
+		cmp dl, 19
+			je .tira2
+			jmp .ok322
+				.tira2:
+					dec dl
+					dec dl
+				.ok322:
+						cmp dl, 17
+						je .ok32
+						jmp .b1
+							.b1:
+								inc dl
+							.ok32:
+								;para act3_2 a constante que o representa é o 17
+								mov si, pulalinha
+								call printa_string
+
+								mov si, act3_2Msg
+								call printa_string
+
+								mov si, choiceMsg
+								call printa_string
+
+								mov si, act3_2Choices
+								call printa_string
+
+								call rick_init
+								jmp rick_choice_system
+				
+
+	act3_3:
+		inc dl
+		inc dl
+		;para act3_3 a contante que o representa é o 18
+		mov si, pulalinha
+		call printa_string
+
+		mov si, act3_3Msg
+		call printa_string
+
+		mov si, choiceMsg
+		call printa_string
+
+		mov si, act3_3Choices
+		call printa_string
+
+		call rick_init
+		jmp rick_choice_system
+				
+		
     ret
-act5:
-    mov si, pulalinha
-    call printa_string
 
-    mov si, act4Msg
-    call printa_string
 
-    mov si, choiceMsg
-    call printa_string
-
-    mov si, act1Choices
-    call printa_string
-
-    call rick_init
-    call rick_choice_system
-
-    ret
+    
 ending:
+	mov si, fim
+	call printa_string
+	jmp hold
+
+ending2:
+	mov si, fim2
+	call printa_string
+	jmp hold
+
+
+ending3:
+	mov si, fim3
+	call printa_string
+	jmp hold
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;FUNÇÕES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -206,7 +535,7 @@ init:
     int 10h
 
     ;muda cor do texto
-    mov bl, 0010 ;branco
+    mov bl, 0010 ;verde
     ret
 
 printa_string:
@@ -269,7 +598,7 @@ rick_init:
     call printa_string
     ;printa caixas de contorno
     call printBoxes
-    
+    ;CX é a opçãozinha lá abc tá ligado, podendo ser 0, 1 ou 2
     mov cx, 0
     ret
 
@@ -285,10 +614,10 @@ rick_choice_system:
             inc cx
             
             cmp cx, 3
-            je .negativo
+            je .casod3
             jmp .ok1
 
-            .negativo:
+            .casod3:
                 dec cx
                 dec cx
                 dec cx
@@ -305,10 +634,10 @@ rick_choice_system:
             dec cx
 
             cmp cx, -1
-            je .zero
+            je .negativo
             jmp .ok2
 
-            .zero:
+            .negativo:
                 inc cx
                 inc cx
                 inc cx
@@ -341,31 +670,119 @@ confirm_choice:
     call clearAll
     inc dl
 
-    ;navega pelo ato 1
+
     cmp dl, 1
     je .branchesAct1
-
-    ;se vai pro ato 2
-    cmp dl, 2
-    je .branchesAct1_x
-    ;se vai pro ato 3
-    cmp dl, 3
-    je act4
-    ;se vai pro ato 4
-    cmp dl, 4
-    je act5
-    ;se vai pro ato 5
-    cmp dl, 5
-    je ending
+    cmp dl, 6
+    je .branchesAct2
+	cmp dl, 3
+	je .branchesAct1_3_vindoDoAct1_2
+	cmp dl, 4
+	je .branchesAct1_3_1
+	cmp dl, 5
+	je .branchesAct1_3_2
+	cmp dl, 7
+	je .branchesAct2Up
+	cmp dl, 8
+	je .branchesAct2_1
+	cmp dl, 9
+	je .branchesAct2_2
+	cmp dl, 10
+	je .branchesAct2_2_1
+	cmp dl, 11
+	je .branchesAct2_2_2
+	cmp dl, 12
+	je .branchesAct2_2_3
+	cmp dl, 16
+	je .branchesAct3
+	cmp dl, 17
+	je .branchesAct3_1
+	cmp dl, 18
+	je .branchesAct3_2
+	cmp dl, 19
+	je .branchesAct3_3
+	
     ;programa termina aqui
 
-        .branchesAct1
+        .branchesAct1:
             cmp cx, 2
             je act1_2
-            jmp act1_1
-        .branchesAct1_x
-            cmp 
-
+			jmp act1_1
+		.branchesAct1_3_vindoDoAct1_2:
+			cmp cx, 1
+			je act1_3_2_vindoDoAct1_2
+			jmp act1_3_1_vindoDoAct1_2
+		.branchesAct1_3_1:
+			cmp cx, 0
+			je act2
+			cmp cx, 1
+			je act2_1
+			jmp act2_2
+		.branchesAct1_3_2:
+			cmp cx, 0
+			je act2
+			cmp cx, 1
+			je act2_1
+			jmp act2_2
+		
+		 .branchesAct2:
+			cmp cx, 0
+			je act2
+			cmp cx, 1
+			je act2_1
+			jmp act2_2
+		 .branchesAct2Up:
+			cmp cx, 0
+			je ending
+			cmp cx, 1
+			je act2_1
+			jmp act2_2
+		.branchesAct2_1:
+			cmp cx, 1
+			je act2_2
+			jmp ending
+		.branchesAct2_2:
+			cmp cx, 0
+			je act2_2_1
+			cmp cx, 1
+			je act2_2_2
+			jmp act2_2_3
+		.branchesAct2_2_1:
+			cmp cx, 0
+			je act2_2_2
+			cmp cx, 1
+			je act2_2_3
+			jmp ending
+		.branchesAct2_2_2:
+			cmp cx, 0
+			je ending
+			cmp cx, 1
+			je act2_2_3
+			jmp act3
+		.branchesAct2_2_3:
+			cmp cx, 1
+			je act2_2_1
+			jmp ending
+		.branchesAct3:
+			cmp cx, 0
+			je act3_1
+			cmp cx, 1
+			je act3_2
+			jmp act3_3
+		.branchesAct3_1:
+			cmp cx, 1
+			je act3_2
+			jmp ending2
+		.branchesAct3_2:
+			cmp cx, 1
+			je act3_1
+			jmp ending3
+		.branchesAct3_3:
+			cmp cx, 0
+			je act3_1
+			cmp cx, 1
+			je act3_2
+			jmp ending3
 
 
 
@@ -412,7 +829,7 @@ printBoxes:
 
     .main:
         ;para printar a linha de cima
-        .printUp
+        .printUp:
             mov ah, 0ch ;pixel na coordenada [dx, cx]
             mov bh, 0
             mov al, 0fh ;cor do pixel (branco)

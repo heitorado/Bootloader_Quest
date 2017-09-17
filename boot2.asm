@@ -253,6 +253,6 @@ wait_confirmation:
         ;senao, continua esperando
         JMP .main
 
-    .done
+    .done:
         popa
         ret
