@@ -6,16 +6,16 @@ input times 2 db 0
 
 dual_enter db 13, 10, 13,10, 0
 four_enter db 13,10, 13,10, 13,10, 13,10, 13,10, 0
-message1 db '    >Loading Adventure...', 13, 10, 13, 10, 0
-message2 db '    >Beating gnomes out of the CPU...', 13, 10, 13, 10, 0
-message3 db '    >Clearing the fairy dust...', 13, 10, 13, 10, 0
-message4 db '    >DEUS VULTing your core...', 13, 10, 13, 10, 0
-message5 db '    >Cleaning the dwarf gears...', 13, 10, 13, 10, 0
+message1 db '    >Rebooting A.C.L.P....', 13, 10, 13, 10, 0
+message2 db '    >Checking for Oxygen Leaks...', 13, 10, 13, 10, 0
+message3 db '    >Aligning Solar Panels...', 13, 10, 13, 10, 0
+message4 db '    >Purging Water Filter...', 13, 10, 13, 10, 0
+message5 db '    >Calibrating door mechanisms...', 13, 10, 13, 10, 0
 ;message6 db '    >Petting the wolf companion...', 13, 10, 0
 ;message7 db '    >Lighting the bonfire...', 13, 10, 0
 ;message8 db '    >Paying tip for the troll...', 13, 10, 0
 ;message9 db '    >Expelling the orcs...', 13, 10, 0
-startKernelMsg db '       >Press Any Key to START<', 0
+startKernelMsg db '      >Press Any Key to CONTINUE<', 0
 
 start:
     xor ax, ax
@@ -68,6 +68,8 @@ load:
     mov si, dual_enter
     call printa_string
 
+    call wait_confirmation
+
     ;sequencia que mostra mensagens de carregamento
     mov si, message1
     call printa_string
@@ -99,8 +101,6 @@ load:
     mov si, startKernelMsg
     call printa_string
 
-    call wait_confirmation
-
     ;programa termina aqui
 
     jmp 0x7e00  ;pula para o setor de endereco 0x7e00 (start do boot2)
@@ -130,7 +130,7 @@ delayText:
     pusha
     ;coloca 5000 no cx
     MOV     CX, 0H
-    MOV     DX, 4248H ;;valor original: 9248H
+    MOV     DX, 9248H ;;valor rapido: 4248H
     MOV     AH, 86H
     INT     15H
     popa
