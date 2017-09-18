@@ -68,7 +68,6 @@ load:
     mov si, dual_enter
     call printa_string
 
-    call wait_confirmation
 
     ;sequencia que mostra mensagens de carregamento
     mov si, message1
@@ -100,6 +99,9 @@ load:
   
     mov si, startKernelMsg
     call printa_string
+    
+    ;espera usuario pressionar uma tecla
+    call wait_confirmation
 
     ;programa termina aqui
 
